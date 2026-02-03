@@ -142,7 +142,7 @@ export default function App() {
                             <Sparkles size={22} strokeWidth={1.2} />
                         </button>
                         <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-sm opacity-0 group-hover:opacity-100 whitespace-nowrap border border-slate-700 pointer-events-none transition-opacity z-50 font-mono tracking-wider">
-                            DATA CORE ⌘
+                            DATA CORE
                         </div>
                     </div>
                 </div>
