@@ -6,7 +6,6 @@ import {
     LayoutDashboard,
     Table as TableIcon,
     CheckCircle2,
-    ChevronRight,
     X,
     Cpu,
     AlertCircle,
