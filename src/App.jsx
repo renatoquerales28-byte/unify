@@ -94,16 +94,16 @@ export default function App() {
 
             {/* --- 1. LEFT SIDEBAR (Activity Bar) - COMÚN PARA TODAS LAS VISTAS --- */}
             <div className="w-16 flex-shrink-0 border-r border-slate-200 bg-white flex flex-col items-center py-4 z-20">
-                <div className="mb-6 group relative w-full flex justify-center px-2">
-                    <div className="w-10 h-10 flex items-center justify-center cursor-default bg-slate-50 border border-slate-100 rounded-sm hover:border-slate-200 transition-all">
-                        <img src="/Centhronpy_13.png" alt="Centhropy" className="w-8 h-8 object-contain opacity-80" />
+                <div className="mb-6 group relative w-full flex justify-center">
+                    <div className="w-[60px] h-[60px] flex items-center justify-center cursor-default hover:scale-105 transition-transform duration-300">
+                        <img src="/Centhronpy_13.png" alt="Centhropy" className="w-full h-full object-contain" />
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-4 w-full items-center mt-2">
                     {/* Switcher de Identidad */}
                     <div className="relative w-full flex justify-center group">
-                        {activeView === 'organizations' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-r-full" />}
+                        {activeView === 'organizations' && <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-l-full" />}
                         <button
                             onClick={() => setActiveView('organizations')}
                             className={`p-2.5 rounded-sm transition-all flex justify-center relative
@@ -118,7 +118,7 @@ export default function App() {
 
                     {/* Botón Dashboard */}
                     <div className="relative w-full flex justify-center group">
-                        {activeView === 'dashboard' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-r-full" />}
+                        {activeView === 'dashboard' && <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-l-full" />}
                         <button
                             onClick={() => setActiveView('dashboard')}
                             className={`p-2.5 rounded-sm transition-all flex justify-center relative 
@@ -133,7 +133,7 @@ export default function App() {
 
                     {/* Data Core */}
                     <div className="relative w-full flex justify-center group">
-                        {activeView === 'datacore' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-r-full" />}
+                        {activeView === 'datacore' && <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-l-full" />}
                         <button
                             onClick={() => setActiveView('datacore')}
                             className={`p-2.5 rounded-sm transition-all flex justify-center relative 
