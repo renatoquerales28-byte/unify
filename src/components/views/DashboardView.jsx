@@ -25,44 +25,54 @@ import { ChatMessage } from '../chat/ChatComponents';
 // --- Launcher Component (The "New Tab" Page) ---
 const TabLauncher = ({ onSelectPerspective, onSelectCorrelation }) => {
     const perspectives = [
-        { id: 'ventas', title: 'Ventas', desc: 'Ingresos, conversión y ROAS.', icon: <BarChart3 size={16} /> },
-        { id: 'inventario', title: 'Inventario', desc: 'Rotación, stock y capital.', icon: <Database size={16} /> },
-        { id: 'clientes', title: 'Clientes', desc: 'Retención, LTV y segmentación.', icon: <Users size={16} /> },
-        { id: 'logistica', title: 'Logística', desc: 'Tiempos y costos de entrega.', icon: <GitBranch size={16} /> },
+        { id: 'ventas', title: 'Ventas', type: 'Módulo Operativo', desc: 'Ingresos, conversión y ROAS.', icon: <BarChart3 /> },
+        { id: 'inventario', title: 'Inventario', type: 'Módulo de Activos', desc: 'Rotación, stock y capital.', icon: <Database /> },
+        { id: 'clientes', title: 'Clientes', type: 'Módulo de Usuario', desc: 'Retención, LTV y segmentación.', icon: <Users /> },
+        { id: 'logistica', title: 'Logística', type: 'Módulo de Flujo', desc: 'Tiempos y costos de entrega.', icon: <GitBranch /> },
     ];
 
     const correlations = [
-        { id: 'eficiencia', title: 'Eficiencia Comercial', desc: 'Ventas + Marketing', icon: <Zap size={16} /> },
-        { id: 'salud', title: 'Salud de Flujo de Caja', desc: 'Ventas + Inventario', icon: <Activity size={16} /> },
-        { id: 'retencion', title: 'Retención Táctica', desc: 'Clientes + Logística', icon: <Layers size={16} /> },
+        { id: 'eficiencia', title: 'Eficiencia Comercial', type: 'Cruzado de Negocio', desc: 'Ventas + Marketing', icon: <Zap /> },
+        { id: 'salud', title: 'Salud de Flujo de Caja', type: 'Análisis de Riesgo', desc: 'Ventas + Inventario', icon: <Activity /> },
+        { id: 'retencion', title: 'Retención Táctica', type: 'Relación de Servicio', desc: 'Clientes + Logística', icon: <Layers /> },
     ];
 
     return (
-        <div className="flex-1 overflow-auto bg-slate-50/50 p-8">
-            <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+        <div className="flex-1 overflow-auto bg-[#f8fafc] p-10 animate-in fade-in duration-300">
+            <div className="max-w-4xl mx-auto w-full">
 
-                {/* Header */}
-                <div className="text-center space-y-1">
-                    <h2 className="text-2xl font-light text-slate-800 tracking-tight">Seleccionar Nueva Vista</h2>
-                    <p className="text-[9px] text-slate-400 font-mono uppercase tracking-[0.2em] opacity-60">Unify Analytical Core</p>
+                {/* Header (Mirroring OrgSelector style) */}
+                <div className="mb-8 border-l-2 border-blue-600 pl-5">
+                    <span className="text-[9px] font-mono font-bold tracking-[0.3em] text-blue-600 uppercase">Analytical Core / Unify</span>
+                    <h2 className="text-2xl font-light text-slate-900 mt-1 tracking-tight uppercase">Seleccionar Nueva Vista</h2>
+                    <p className="text-slate-500 mt-1 max-w-md text-[11px] font-mono opacity-60">
+                        [SELECT_PERSPECTIVE] Iniciar sesión de análisis profundo.
+                    </p>
                 </div>
 
                 {/* Perspectives Grid */}
-                <div className="space-y-3">
-                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-1.5">Perspectivas Directas</h3>
+                <div className="space-y-3 mb-10">
+                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-1.5 flex items-center gap-2">
+                        Perspectivas Directas
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         {perspectives.map(p => (
                             <button
                                 key={p.id}
                                 onClick={() => onSelectPerspective(p)}
-                                className="group p-3 bg-white border border-slate-200 hover:border-blue-400 hover:shadow-sm transition-all text-left flex items-center gap-3"
+                                className="group p-4 bg-white border border-slate-200 hover:border-blue-500 hover:bg-slate-50 transition-all text-left flex flex-col gap-3 h-full relative"
                             >
-                                <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:border-blue-100 group-hover:text-blue-600 transition-colors">
-                                    {p.icon}
+                                <div className="w-9 h-9 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-600 transition-colors">
+                                    {React.cloneElement(p.icon, { size: 18, strokeWidth: 1.5 })}
                                 </div>
-                                <div className="min-w-0">
-                                    <h4 className="text-xs font-bold text-slate-800 truncate">{p.title}</h4>
-                                    <p className="text-[9px] text-slate-500 truncate leading-tight">{p.desc}</p>
+                                <div className="flex-1">
+                                    <h4 className="text-base font-medium text-slate-900 tracking-tight leading-tight">{p.title}</h4>
+                                    <span className="text-[8px] font-mono font-bold text-slate-400 uppercase tracking-widest mt-0.5 block">{p.type}</span>
+                                    <p className="text-[10px] text-slate-500 mt-2 leading-tight font-mono opacity-70">{p.desc}</p>
+                                </div>
+                                <div className="mt-3 flex items-center justify-between text-[9px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span className="text-blue-600 italic">Iniciar</span>
+                                    <ArrowUpRight size={12} className="text-blue-400" />
                                 </div>
                             </button>
                         ))}
@@ -71,22 +81,28 @@ const TabLauncher = ({ onSelectPerspective, onSelectCorrelation }) => {
 
                 {/* Correlations Grid */}
                 <div className="space-y-3">
-                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-1.5">Correlaciones Prediseñadas</h3>
+                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-1.5 flex items-center gap-2">
+                        Correlaciones Inteligentes
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         {correlations.map(c => (
                             <button
                                 key={c.id}
                                 onClick={() => onSelectCorrelation(c)}
-                                className="group p-3 bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-sm transition-all text-left flex items-center gap-3 relative overflow-hidden"
+                                className="group p-4 bg-white border border-slate-200 hover:border-emerald-500 hover:bg-slate-50 transition-all text-left flex flex-col gap-3 h-full relative"
                             >
-                                <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-emerald-50 group-hover:border-emerald-100 group-hover:text-emerald-600 transition-colors">
-                                    {c.icon}
+                                <div className="w-9 h-9 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-emerald-50 group-hover:border-emerald-200 group-hover:text-emerald-600 transition-colors">
+                                    {React.cloneElement(c.icon, { size: 18, strokeWidth: 1.5 })}
                                 </div>
-                                <div className="min-w-0 pr-4">
-                                    <h4 className="text-xs font-bold text-slate-800 truncate">{c.title}</h4>
-                                    <p className="text-[9px] text-slate-500 truncate leading-tight">{c.desc}</p>
+                                <div className="flex-1">
+                                    <h4 className="text-base font-medium text-slate-900 tracking-tight leading-tight">{c.title}</h4>
+                                    <span className="text-[8px] font-mono font-bold text-slate-400 uppercase tracking-widest mt-0.5 block">{c.type}</span>
+                                    <p className="text-[10px] text-slate-500 mt-2 leading-tight font-mono opacity-70">{c.desc}</p>
                                 </div>
-                                <div className="absolute right-0 top-0 bottom-0 w-1 bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div className="mt-3 flex items-center justify-between text-[9px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span className="text-emerald-600 italic">Vincular</span>
+                                    <ArrowUpRight size={12} className="text-emerald-400" />
+                                </div>
                             </button>
                         ))}
                     </div>
