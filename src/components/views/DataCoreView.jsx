@@ -46,7 +46,7 @@ export const DataCoreView = () => {
                 </div>
 
                 {/* CHAT: Posición mantenida con margen estándar */}
-                <div className="w-full relative group px-4 md:px-0 mt-8 z-30">
+                <div className="w-full relative px-4 md:px-0 mt-8 z-30">
 
                     {/* Tactical Suggestion Rail (Estilo Dashboard) */}
                     <div className="flex items-center gap-1 mb-3">
@@ -66,14 +66,14 @@ export const DataCoreView = () => {
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
                             {[
-                                { label: "💰 Rentabilidad", text: "Ver rentabilidad detallada por canal de venta.", icon: <TrendingUp size={10} /> },
-                                { label: "📦 Riesgo Stock", text: "Identificar SKUs con riesgo de quiebre de stock.", icon: <PackageSearch size={10} /> },
-                                { label: "⚡ Simular Impacto", text: "Simular impacto de un 15% de descuento en baja rotación.", icon: <Zap size={10} /> },
-                                { label: "📊 Cruzar Data", text: "Cruzar ventas vs niveles de inventario por categoría.", icon: <Layers size={10} /> },
-                                { label: "🚚 Logística", text: "Análisis de tiempos de entrega y logística.", icon: <Truck size={10} /> },
-                                { label: "⚠️ Alertas", text: "Ver alertas críticas del sistema hoy.", icon: <AlertCircle size={10} /> },
-                                { label: "📈 Proyección", text: "Mostrar proyección de ventas para el próximo trimestre.", icon: <BarChart3 size={10} /> },
-                                { label: "👥 Churn VIP", text: "Reporte de tasa de abandono de clientes VIP.", icon: <Users size={10} /> }
+                                { label: "Rentabilidad", text: "Ver rentabilidad detallada por canal de venta.", icon: <TrendingUp size={10} /> },
+                                { label: "Riesgo Stock", text: "Identificar SKUs con riesgo de quiebre de stock.", icon: <PackageSearch size={10} /> },
+                                { label: "Simular Impacto", text: "Simular impacto de un 15% de descuento en baja rotación.", icon: <Zap size={10} /> },
+                                { label: "Cruzar Data", text: "Cruzar ventas vs niveles de inventario por categoría.", icon: <Layers size={10} /> },
+                                { label: "Logística", text: "Análisis de tiempos de entrega y logística.", icon: <Truck size={10} /> },
+                                { label: "Alertas Críticas", text: "Ver alertas críticas del sistema hoy.", icon: <AlertCircle size={10} /> },
+                                { label: "Proyección", text: "Mostrar proyección de ventas para el próximo trimestre.", icon: <BarChart3 size={10} /> },
+                                { label: "Churn VIP", text: "Reporte de tasa de abandono de clientes VIP.", icon: <Users size={10} /> }
                             ].map((s, idx) => (
                                 <button
                                     key={idx}
