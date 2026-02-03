@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, TrendingUp, PackageSearch, Truck, Users } from 'lucide-react';
 
 export const DataCoreView = () => {
     const [query, setQuery] = useState('');
@@ -80,13 +80,20 @@ export const DataCoreView = () => {
                 {/* Sugerencias Rápidas */}
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
                     {[
-                        "💰 Rentabilidad por Canal",
-                        "📦 Riesgo de Quiebre de Stock",
-                        "🚚 Tiempos de Entrega Logística",
-                        "👥 Churn Rate de Clientes VIP"
-                    ].map((tag, i) => (
-                        <button key={i} className="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs text-slate-500 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-all">
-                            {tag}
+                        { label: "Rentabilidad por Canal", text: "Ver rentabilidad detallada por canal de venta.", icon: <TrendingUp size={12} /> },
+                        { label: "Riesgo de Stock", text: "Identificar SKUs con riesgo de quiebre de stock.", icon: <PackageSearch size={12} /> },
+                        { label: "Tiempos de Entrega", text: "Análisis de tiempos de entrega y logística.", icon: <Truck size={12} /> },
+                        { label: "Churn Rate VIP", text: "Reporte de tasa de abandono de clientes VIP.", icon: <Users size={12} /> }
+                    ].map((s, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setQuery(s.text)}
+                            className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/30 transition-all group h-[32px]"
+                        >
+                            <span className="text-slate-400 group-hover:text-blue-500 transition-colors">{s.icon}</span>
+                            <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">
+                                {s.label}
+                            </span>
                         </button>
                     ))}
                 </div>
