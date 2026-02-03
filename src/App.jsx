@@ -94,53 +94,64 @@ export default function App() {
 
             {/* --- 1. LEFT SIDEBAR (Activity Bar) - COMÚN PARA TODAS LAS VISTAS --- */}
             <div className="w-16 flex-shrink-0 border-r border-slate-200 bg-white flex flex-col items-center py-4 z-20">
-                <div className="mb-6 group relative w-full flex justify-center">
-                    <div className="w-[60px] h-[60px] flex items-center justify-center cursor-default hover:scale-105 transition-transform duration-300">
-                        <img src="/Centhronpy_13.png" alt="Centhropy" className="w-full h-full object-contain" />
+                <div className="mb-6 group relative w-full flex justify-center px-2">
+                    <div className="w-10 h-10 flex items-center justify-center cursor-default bg-slate-50 border border-slate-100 rounded-sm hover:border-slate-200 transition-all">
+                        <img src="/Centhronpy_13.png" alt="Centhropy" className="w-8 h-8 object-contain opacity-80" />
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-6 w-full items-center mt-6">
+                <div className="flex flex-col gap-4 w-full items-center mt-2">
                     {/* Switcher de Identidad */}
-                    <button
-                        onClick={() => setActiveView('organizations')}
-                        className={`p-2.5 rounded-xl transition-all flex justify-center group relative
-                        ${activeView === 'organizations' ? 'text-blue-600 bg-blue-50 shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
-                    >
-                        <Building2 size={24} strokeWidth={1.5} />
-                        <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap border border-slate-700 pointer-events-none transition-opacity z-50">
-                            Selector de Organizaciones
+                    <div className="relative w-full flex justify-center group">
+                        {activeView === 'organizations' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-r-full" />}
+                        <button
+                            onClick={() => setActiveView('organizations')}
+                            className={`p-2.5 rounded-sm transition-all flex justify-center relative
+                            ${activeView === 'organizations' ? 'text-blue-600 bg-blue-50/50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+                        >
+                            <Building2 size={22} strokeWidth={1.2} />
+                        </button>
+                        <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-sm opacity-0 group-hover:opacity-100 whitespace-nowrap border border-slate-700 pointer-events-none transition-opacity z-50 font-mono tracking-wider">
+                            ORGANIZACIONES
                         </div>
-                    </button>
+                    </div>
 
                     {/* Botón Dashboard */}
-                    <button
-                        onClick={() => setActiveView('dashboard')}
-                        className={`p-2.5 rounded-xl transition-all flex justify-center group relative 
-                        ${activeView === 'dashboard' ? 'text-blue-600 bg-blue-50 shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
-                    >
-                        <LayoutDashboard size={24} strokeWidth={1.5} />
-                        <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap border border-slate-700 pointer-events-none transition-opacity z-50">
-                            Dashboard
+                    <div className="relative w-full flex justify-center group">
+                        {activeView === 'dashboard' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-r-full" />}
+                        <button
+                            onClick={() => setActiveView('dashboard')}
+                            className={`p-2.5 rounded-sm transition-all flex justify-center relative 
+                            ${activeView === 'dashboard' ? 'text-blue-600 bg-blue-50/50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+                        >
+                            <LayoutDashboard size={22} strokeWidth={1.2} />
+                        </button>
+                        <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-sm opacity-0 group-hover:opacity-100 whitespace-nowrap border border-slate-700 pointer-events-none transition-opacity z-50 font-mono tracking-wider">
+                            DASHBOARD
                         </div>
-                    </button>
+                    </div>
 
                     {/* Data Core */}
-                    <button
-                        onClick={() => setActiveView('datacore')}
-                        className={`p-2.5 rounded-xl transition-all flex justify-center group relative 
-                        ${activeView === 'datacore' ? 'text-blue-600 bg-blue-50 shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
-                    >
-                        <Sparkles size={24} strokeWidth={1.5} />
-                        <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap border border-slate-700 pointer-events-none transition-opacity z-50">
-                            Data Core ⌘
+                    <div className="relative w-full flex justify-center group">
+                        {activeView === 'datacore' && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-blue-600 rounded-r-full" />}
+                        <button
+                            onClick={() => setActiveView('datacore')}
+                            className={`p-2.5 rounded-sm transition-all flex justify-center relative 
+                            ${activeView === 'datacore' ? 'text-blue-600 bg-blue-50/50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+                        >
+                            <Sparkles size={22} strokeWidth={1.2} />
+                        </button>
+                        <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-sm opacity-0 group-hover:opacity-100 whitespace-nowrap border border-slate-700 pointer-events-none transition-opacity z-50 font-mono tracking-wider">
+                            DATA CORE ⌘
                         </div>
-                    </button>
+                    </div>
                 </div>
 
-                <div className="mt-auto flex flex-col gap-6 w-full items-center mb-4">
-                    <button className="p-2 text-slate-400 hover:text-slate-600 flex justify-center"><Settings size={22} strokeWidth={1.5} /></button>
-                    <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-xs text-slate-600 font-mono ring-2 ring-transparent hover:ring-slate-200 transition-all cursor-pointer font-bold">
+                <div className="mt-auto flex flex-col gap-4 w-full items-center mb-4">
+                    <button className="p-2.5 text-slate-400 hover:text-slate-600 flex justify-center transition-colors">
+                        <Settings size={20} strokeWidth={1.2} />
+                    </button>
+                    <div className="w-9 h-9 rounded-sm bg-slate-50 border border-slate-200 flex items-center justify-center text-[10px] text-slate-600 font-mono hover:border-slate-300 transition-all cursor-pointer font-bold">
                         JB
                     </div>
                 </div>
