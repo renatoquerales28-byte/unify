@@ -230,23 +230,23 @@ export const DashboardView = ({
             <div className="flex-1 flex flex-col min-w-0 bg-slate-50 relative">
 
                 {/* --- 1. TOP TABS (Browser Style) --- */}
-                <div className="h-10 bg-slate-100 border-b border-slate-200 flex items-end px-2 gap-1 overflow-x-auto overflow-y-hidden custom-scrollbar pr-12">
+                <div className="h-10 bg-slate-100 border-b border-slate-200 flex items-center px-2 gap-1 overflow-x-auto overflow-y-hidden custom-scrollbar pr-12">
                     {tabs.map((tab) => (
                         <div
                             key={tab.id}
                             onClick={() => setActiveTabId(tab.id)}
-                            className={`px-4 py-2 border-r border-slate-200 min-w-[140px] max-w-[200px] flex items-center gap-2 cursor-pointer transition-all relative rounded-t-sm group
+                            className={`px-4 h-8 border-r border-slate-200 min-w-[140px] max-w-[200px] flex items-center gap-2 cursor-pointer transition-all relative group
                             ${activeTabId === tab.id
-                                    ? 'bg-slate-50 border-t-2 border-blue-500 text-slate-800 shadow-[0_-2px_4px_rgba(0,0,0,0.02)] z-10'
+                                    ? 'bg-slate-50 border-t-2 border-blue-500 text-slate-800 shadow-[0_-2px_4px_rgba(0,0,0,0.01)] z-10'
                                     : 'bg-slate-200/50 hover:bg-slate-100 text-slate-500 border-t border-transparent'}`}
                         >
                             {tab.type === 'launcher' ? <Plus size={12} className="opacity-50" /> : <Activity size={12} className={activeTabId === tab.id ? 'text-blue-600' : 'text-slate-400'} />}
                             <span className="text-[10px] font-mono font-medium truncate flex-1 uppercase tracking-wider">{tab.title}</span>
                             <button
                                 onClick={(e) => closeTab(tab.id, e)}
-                                className={`p-0.5 rounded hover:bg-slate-300 transition-colors opacity-0 group-hover:opacity-100 ${activeTabId === tab.id ? 'opacity-100' : ''}`}
+                                className={`p-1 rounded-none hover:bg-slate-300 transition-colors opacity-0 group-hover:opacity-100 ${activeTabId === tab.id ? 'opacity-100' : ''}`}
                             >
-                                <X size={10} />
+                                <X size={12} />
                             </button>
                         </div>
                     ))}
@@ -254,9 +254,9 @@ export const DashboardView = ({
                     {/* New Tab Button */}
                     <button
                         onClick={addNewTab}
-                        className="p-2 mb-1 text-slate-500 hover:bg-slate-200 rounded-md transition-colors"
+                        className="w-8 h-8 flex items-center justify-center text-slate-500 hover:bg-slate-200 rounded-none transition-colors"
                     >
-                        <Plus size={14} />
+                        <Plus size={12} />
                     </button>
 
                     {/* Open Chat Button (Visible only when chat is closed) */}
