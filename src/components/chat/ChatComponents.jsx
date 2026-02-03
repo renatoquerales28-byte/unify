@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Database, Send, X, Maximize2, Sparkles, Command, ArrowRight, Activity, Zap, Layers, AlertCircle } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Database, Send, X, Maximize2, Sparkles, Command, ArrowRight, Activity, Zap, Layers, AlertCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ChatMessage = ({ message }) => {
     const isUser = message.role === 'user';
@@ -85,25 +85,50 @@ export const ChatPanel = ({ messages, input, setInput, handleSend, chatOpen, set
             </div>
 
             <div className="p-4 border-t border-slate-200 bg-white shadow-[0_-4px_12px_-4px_rgba(0,0,0,0.05)]">
-                {/* Tactical Suggestion Chips */}
-                <div className="flex gap-2 mb-3 overflow-x-auto no-scrollbar pb-1">
-                    {[
-                        { label: "Simular", text: "Simular impacto de un 15% de descuento en baja rotación.", icon: <Zap size={10} /> },
-                        { label: "Liquidez", text: "¿Cómo puedo liberar $10k de flujo de caja hoy?", icon: <Activity size={10} /> },
-                        { label: "Riesgos", text: "Ver SKUs con riesgo de quiebre en los próximos 15 días.", icon: <AlertCircle size={10} /> },
-                        { label: "Vincular", text: "Cruzar ventas vs niveles de inventario por categoría.", icon: <Layers size={10} /> }
-                    ].map((s, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => handleSend(s.text)}
-                            className="flex-shrink-0 flex items-center gap-1 px-2 py-1 bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/50 transition-all group"
-                        >
-                            <span className="text-slate-400 group-hover:text-blue-500 transition-colors">{s.icon}</span>
-                            <span className="text-[8px] font-mono font-bold text-slate-500 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">
-                                {s.label}
-                            </span>
-                        </button>
-                    ))}
+                {/* Tactical Suggestion Rail */}
+                <div className="flex items-center gap-1 mb-3">
+                    <button
+                        onClick={() => {
+                            const container = document.getElementById('chat-suggestion-rail');
+                            if (container) container.scrollLeft -= 100;
+                        }}
+                        className="w-6 h-[22px] flex items-center justify-center bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/50 text-slate-400 hover:text-blue-600 transition-all flex-shrink-0"
+                    >
+                        <ChevronLeft size={10} />
+                    </button>
+
+                    <div
+                        id="chat-suggestion-rail"
+                        className="flex-1 flex gap-2 overflow-x-hidden scroll-smooth no-scrollbar"
+                    >
+                        {[
+                            { label: "Simular", text: "Simular impacto de un 15% de descuento en baja rotación.", icon: <Zap size={10} /> },
+                            { label: "Liquidez", text: "¿Cómo puedo liberar $10k de flujo de caja hoy?", icon: <Activity size={10} /> },
+                            { label: "Riesgos", text: "Ver SKUs con riesgo de quiebre en los próximos 15 días.", icon: <AlertCircle size={10} /> },
+                            { label: "Vincular", text: "Cruzar ventas vs niveles de inventario por categoría.", icon: <Layers size={10} /> }
+                        ].map((s, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => handleSend(s.text)}
+                                className="flex-shrink-0 flex items-center gap-1 px-2 py-1 bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/50 transition-all group h-[22px]"
+                            >
+                                <span className="text-slate-400 group-hover:text-blue-500 transition-colors">{s.icon}</span>
+                                <span className="text-[8px] font-mono font-bold text-slate-500 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">
+                                    {s.label}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+
+                    <button
+                        onClick={() => {
+                            const container = document.getElementById('chat-suggestion-rail');
+                            if (container) container.scrollLeft += 100;
+                        }}
+                        className="w-6 h-[22px] flex items-center justify-center bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/50 text-slate-400 hover:text-blue-600 transition-all flex-shrink-0"
+                    >
+                        <ChevronRight size={10} />
+                    </button>
                 </div>
 
                 <div className="relative group">

@@ -19,7 +19,9 @@ import {
     Users,
     GitBranch,
     ArrowUpRight,
-    ArrowRight
+    ArrowRight,
+    ChevronLeft,
+    ChevronRight
 } from 'lucide-react';
 import { Card, Badge } from '../common/UIElements';
 import { HeroesMatrix, PrescriptionCard } from '../dashboard/Widgets';
@@ -333,25 +335,50 @@ export const DashboardView = ({
                     </div>
 
                     <div className="p-4 border-t border-slate-200 bg-white">
-                        {/* Suggestion Chips */}
-                        <div className="flex gap-2 mb-3 overflow-x-auto no-scrollbar pb-1">
-                            {[
-                                { label: "Simular Impacto", text: "Simular impacto de un 15% de descuento en baja rotación.", icon: <Zap size={10} /> },
-                                { label: "Analizar Liquidez", text: "¿Cómo puedo liberar $10k de flujo de caja hoy?", icon: <Activity size={10} /> },
-                                { label: "Riesgo Stock", text: "Ver SKUs con riesgo de quiebre en los próximos 15 días.", icon: <AlertCircle size={10} /> },
-                                { label: "Cruzar Data", text: "Cruzar ventas vs niveles de inventario por categoría.", icon: <Layers size={10} /> }
-                            ].map((s, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => handleSend(s.text)}
-                                    className="flex-shrink-0 flex items-center gap-1.5 px-2 py-1 bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/30 transition-all group"
-                                >
-                                    <span className="text-slate-400 group-hover:text-blue-500 transition-colors">{s.icon}</span>
-                                    <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">
-                                        {s.label}
-                                    </span>
-                                </button>
-                            ))}
+                        {/* Tactical Suggestion Rail */}
+                        <div className="flex items-center gap-1 mb-3">
+                            <button
+                                onClick={() => {
+                                    const container = document.getElementById('dashboard-suggestion-rail');
+                                    if (container) container.scrollLeft -= 100;
+                                }}
+                                className="w-7 h-[26px] flex items-center justify-center bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/50 text-slate-400 hover:text-blue-600 transition-all flex-shrink-0"
+                            >
+                                <ChevronLeft size={12} />
+                            </button>
+
+                            <div
+                                id="dashboard-suggestion-rail"
+                                className="flex-1 flex gap-2 overflow-x-hidden scroll-smooth no-scrollbar"
+                            >
+                                {[
+                                    { label: "Simular Impacto", text: "Simular impacto de un 15% de descuento en baja rotación.", icon: <Zap size={10} /> },
+                                    { label: "Analizar Liquidez", text: "¿Cómo puedo liberar $10k de flujo de caja hoy?", icon: <Activity size={10} /> },
+                                    { label: "Riesgo Stock", text: "Ver SKUs con riesgo de quiebre en los próximos 15 días.", icon: <AlertCircle size={10} /> },
+                                    { label: "Cruzar Data", text: "Cruzar ventas vs niveles de inventario por categoría.", icon: <Layers size={10} /> }
+                                ].map((s, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => handleSend(s.text)}
+                                        className="flex-shrink-0 flex items-center gap-1.5 px-2 py-1 bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/30 transition-all group h-[26px]"
+                                    >
+                                        <span className="text-slate-400 group-hover:text-blue-500 transition-colors">{s.icon}</span>
+                                        <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">
+                                            {s.label}
+                                        </span>
+                                    </button>
+                                ))}
+                            </div>
+
+                            <button
+                                onClick={() => {
+                                    const container = document.getElementById('dashboard-suggestion-rail');
+                                    if (container) container.scrollLeft += 100;
+                                }}
+                                className="w-7 h-[26px] flex items-center justify-center bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/50 text-slate-400 hover:text-blue-600 transition-all flex-shrink-0"
+                            >
+                                <ChevronRight size={12} />
+                            </button>
                         </div>
 
                         <div className="flex items-end gap-2 p-2 bg-slate-50 border border-slate-200 rounded-xl focus-within:ring-2 focus-within:ring-blue-100 focus-within:border-blue-400 transition-all shadow-sm">
