@@ -25,44 +25,44 @@ import { ChatMessage } from '../chat/ChatComponents';
 // --- Launcher Component (The "New Tab" Page) ---
 const TabLauncher = ({ onSelectPerspective, onSelectCorrelation }) => {
     const perspectives = [
-        { id: 'ventas', title: 'Ventas', desc: 'Ingresos, conversión y ROAS.', icon: <BarChart3 size={20} /> },
-        { id: 'inventario', title: 'Inventario', desc: 'Rotación, stock y capital.', icon: <Database size={20} /> },
-        { id: 'clientes', title: 'Clientes', desc: 'Retención, LTV y segmentación.', icon: <Users size={20} /> },
-        { id: 'logistica', title: 'Logística', desc: 'Tiempos y costos de entrega.', icon: <GitBranch size={20} /> },
+        { id: 'ventas', title: 'Ventas', desc: 'Ingresos, conversión y ROAS.', icon: <BarChart3 size={16} /> },
+        { id: 'inventario', title: 'Inventario', desc: 'Rotación, stock y capital.', icon: <Database size={16} /> },
+        { id: 'clientes', title: 'Clientes', desc: 'Retención, LTV y segmentación.', icon: <Users size={16} /> },
+        { id: 'logistica', title: 'Logística', desc: 'Tiempos y costos de entrega.', icon: <GitBranch size={16} /> },
     ];
 
     const correlations = [
-        { id: 'eficiencia', title: 'Eficiencia Comercial', desc: 'Ventas + Marketing', icon: <Zap size={20} /> },
-        { id: 'salud', title: 'Salud de Flujo de Caja', desc: 'Ventas + Inventario', icon: <Activity size={20} /> },
-        { id: 'retencion', title: 'Retención Táctica', desc: 'Clientes + Logística', icon: <Layers size={21} /> },
+        { id: 'eficiencia', title: 'Eficiencia Comercial', desc: 'Ventas + Marketing', icon: <Zap size={16} /> },
+        { id: 'salud', title: 'Salud de Flujo de Caja', desc: 'Ventas + Inventario', icon: <Activity size={16} /> },
+        { id: 'retencion', title: 'Retención Táctica', desc: 'Clientes + Logística', icon: <Layers size={16} /> },
     ];
 
     return (
-        <div className="flex-1 overflow-auto bg-slate-50/50 p-12">
-            <div className="max-w-4xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="flex-1 overflow-auto bg-slate-50/50 p-8">
+            <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
 
                 {/* Header */}
-                <div className="text-center space-y-2">
-                    <h2 className="text-3xl font-light text-slate-800 tracking-tight">Seleccionar Nueva Vista</h2>
-                    <p className="text-slate-500 text-sm font-mono uppercase tracking-[0.2em] opacity-60">Unify Analytical Core</p>
+                <div className="text-center space-y-1">
+                    <h2 className="text-2xl font-light text-slate-800 tracking-tight">Seleccionar Nueva Vista</h2>
+                    <p className="text-[9px] text-slate-400 font-mono uppercase tracking-[0.2em] opacity-60">Unify Analytical Core</p>
                 </div>
 
                 {/* Perspectives Grid */}
-                <div className="space-y-4">
-                    <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-2">Perspectivas Directas</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="space-y-3">
+                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-1.5">Perspectivas Directas</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         {perspectives.map(p => (
                             <button
                                 key={p.id}
                                 onClick={() => onSelectPerspective(p)}
-                                className="group p-5 bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all text-left flex flex-col gap-3"
+                                className="group p-3 bg-white border border-slate-200 hover:border-blue-400 hover:shadow-sm transition-all text-left flex items-center gap-3"
                             >
-                                <div className="w-10 h-10 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:border-blue-100 group-hover:text-blue-600 transition-colors">
+                                <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:border-blue-100 group-hover:text-blue-600 transition-colors">
                                     {p.icon}
                                 </div>
-                                <div>
-                                    <h4 className="text-sm font-bold text-slate-800">{p.title}</h4>
-                                    <p className="text-[10px] text-slate-500 mt-1 leading-tight">{p.desc}</p>
+                                <div className="min-w-0">
+                                    <h4 className="text-xs font-bold text-slate-800 truncate">{p.title}</h4>
+                                    <p className="text-[9px] text-slate-500 truncate leading-tight">{p.desc}</p>
                                 </div>
                             </button>
                         ))}
@@ -70,25 +70,23 @@ const TabLauncher = ({ onSelectPerspective, onSelectCorrelation }) => {
                 </div>
 
                 {/* Correlations Grid */}
-                <div className="space-y-4">
-                    <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-2">Correlaciones Prediseñadas</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="space-y-3">
+                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-1.5">Correlaciones Prediseñadas</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         {correlations.map(c => (
                             <button
                                 key={c.id}
                                 onClick={() => onSelectCorrelation(c)}
-                                className="group p-5 bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all text-left flex flex-col gap-3"
+                                className="group p-3 bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-sm transition-all text-left flex items-center gap-3 relative overflow-hidden"
                             >
-                                <div className="w-10 h-10 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-emerald-50 group-hover:border-emerald-100 group-hover:text-emerald-600 transition-colors">
+                                <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 group-hover:bg-emerald-50 group-hover:border-emerald-100 group-hover:text-emerald-600 transition-colors">
                                     {c.icon}
                                 </div>
-                                <div>
-                                    <h4 className="text-sm font-bold text-slate-800">{c.title}</h4>
-                                    <p className="text-[10px] text-slate-500 mt-1 leading-tight">{c.desc}</p>
+                                <div className="min-w-0 pr-4">
+                                    <h4 className="text-xs font-bold text-slate-800 truncate">{c.title}</h4>
+                                    <p className="text-[9px] text-slate-500 truncate leading-tight">{c.desc}</p>
                                 </div>
-                                <div className="mt-2 text-[8px] font-mono font-bold text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">
-                                    Correlación Cruzada
-                                </div>
+                                <div className="absolute right-0 top-0 bottom-0 w-1 bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             </button>
                         ))}
                     </div>
