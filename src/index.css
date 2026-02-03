@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Funnel Display';
+    src: url('/fonts/FunnelDisplay-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    html,
+    body,
+    #root {
+        font-family: 'Funnel Display', sans-serif !important;
+    }
+}
+
+/* Brutal enforcement */
+* {
+    font-family: 'Funnel Display', sans-serif !important;
+}
+
+/* --- SCROLLBAR ESTILIZADO (Tipo macOS/Slack) --- */
+@layer utilities {
+
+    /* Anchura de la barra */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    /* Fondo de la barra (Invisible/Transparente) */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* La barra en sí (Thumb) */
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        /* slate-300 */
+        border-radius: 10px;
+    }
+
+    /* Al pasar el mouse por encima */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+        /* slate-400 */
+    }
+}
