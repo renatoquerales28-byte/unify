@@ -10,6 +10,7 @@ import {
     X,
     Cpu,
     PanelRightClose,
+    PanelRightOpen,
     Plus,
     BarChart3,
     Database,
@@ -226,7 +227,7 @@ export const DashboardView = ({
             <div className="flex-1 flex flex-col min-w-0 bg-slate-50 relative">
 
                 {/* --- 1. TOP TABS (Browser Style) --- */}
-                <div className="h-10 bg-slate-100 border-b border-slate-200 flex items-end px-2 gap-1 overflow-x-auto overflow-y-hidden custom-scrollbar">
+                <div className="h-10 bg-slate-100 border-b border-slate-200 flex items-end px-2 gap-1 overflow-x-auto overflow-y-hidden custom-scrollbar pr-12">
                     {tabs.map((tab) => (
                         <div
                             key={tab.id}
@@ -254,6 +255,17 @@ export const DashboardView = ({
                     >
                         <Plus size={14} />
                     </button>
+
+                    {/* Open Chat Button (Visible only when chat is closed) */}
+                    {!chatOpen && (
+                        <button
+                            onClick={() => setChatOpen(true)}
+                            className="absolute right-0 top-0 w-10 h-10 flex items-center justify-center bg-white border-l border-b border-slate-200 text-slate-400 hover:text-slate-600 transition-all z-20"
+                            title="Abrir Copilot"
+                        >
+                            <PanelRightOpen size={20} strokeWidth={1.5} />
+                        </button>
+                    )}
                 </div>
 
                 {/* --- 2. TOOLBAR (Breadcrumbs) --- */}
