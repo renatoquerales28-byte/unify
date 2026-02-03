@@ -61,12 +61,13 @@ export default function App() {
 
     useEffect(scrollToBottom, [messages]);
 
-    const handleSend = () => {
-        if (!input.trim()) return;
+    const handleSend = (manualMsg = null) => {
+        const msgContent = manualMsg || input;
+        if (!msgContent.trim()) return;
 
         const userMsg = {
             role: 'user',
-            content: input,
+            content: msgContent,
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         };
 

@@ -9,6 +9,7 @@ import {
     ChevronRight,
     X,
     Cpu,
+    AlertCircle,
     PanelRightClose,
     PanelRightOpen,
     Plus,
@@ -332,6 +333,27 @@ export const DashboardView = ({
                     </div>
 
                     <div className="p-4 border-t border-slate-200 bg-white">
+                        {/* Suggestion Chips */}
+                        <div className="flex gap-2 mb-3 overflow-x-auto no-scrollbar pb-1">
+                            {[
+                                { label: "Simular Impacto", text: "Simular impacto de un 15% de descuento en baja rotación.", icon: <Zap size={10} /> },
+                                { label: "Analizar Liquidez", text: "¿Cómo puedo liberar $10k de flujo de caja hoy?", icon: <Activity size={10} /> },
+                                { label: "Riesgo Stock", text: "Ver SKUs con riesgo de quiebre en los próximos 15 días.", icon: <AlertCircle size={10} /> },
+                                { label: "Cruzar Data", text: "Cruzar ventas vs niveles de inventario por categoría.", icon: <Layers size={10} /> }
+                            ].map((s, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => handleSend(s.text)}
+                                    className="flex-shrink-0 flex items-center gap-1.5 px-2 py-1 bg-white border border-slate-200 rounded-sm hover:border-blue-400 hover:bg-blue-50/30 transition-all group"
+                                >
+                                    <span className="text-slate-400 group-hover:text-blue-500 transition-colors">{s.icon}</span>
+                                    <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">
+                                        {s.label}
+                                    </span>
+                                </button>
+                            ))}
+                        </div>
+
                         <div className="flex items-end gap-2 p-2 bg-slate-50 border border-slate-200 rounded-xl focus-within:ring-2 focus-within:ring-blue-100 focus-within:border-blue-400 transition-all shadow-sm">
                             <textarea
                                 ref={textareaRef}
@@ -340,7 +362,7 @@ export const DashboardView = ({
                                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSend())}
                                 className="w-full max-h-32 min-h-[36px] bg-transparent border-none outline-none focus:ring-0 p-2 text-sm text-slate-700 placeholder:text-slate-400 resize-none overflow-y-auto leading-relaxed [&::-webkit-scrollbar]:hidden"
                                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                                placeholder="Escribe un mensaje..."
+                                placeholder="Preguntar a Cordycep..."
                                 rows={1}
                             ></textarea>
 
