@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Database, Send, X, Maximize2, Sparkles, Command } from 'lucide-react';
+import { Database, Send, X, Maximize2, Sparkles, Command, ArrowRight } from 'lucide-react';
 
 export const ChatMessage = ({ message }) => {
     const isUser = message.role === 'user';
@@ -103,9 +103,12 @@ export const ChatPanel = ({ messages, input, setInput, handleSend, chatOpen, set
                     <button
                         onClick={handleSend}
                         disabled={!input.trim()}
-                        className="absolute right-2 top-2 p-1 text-slate-400 hover:text-blue-600 disabled:opacity-30 disabled:hover:text-slate-400 transition-colors"
+                        className={`absolute right-1.5 top-1.5 w-7 h-7 rounded-md flex items-center justify-center transition-all
+                            ${input.trim()
+                                ? 'bg-slate-900 text-white hover:bg-black shadow-md'
+                                : 'bg-slate-100 text-slate-300 cursor-not-allowed'}`}
                     >
-                        <Send size={16} />
+                        <ArrowRight size={14} strokeWidth={2.5} />
                     </button>
                 </div>
                 <div className="mt-2 flex items-center justify-between text-[8px] font-mono text-slate-400 uppercase tracking-widest px-1">

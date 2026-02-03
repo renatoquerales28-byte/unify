@@ -17,7 +17,8 @@ import {
     Layers,
     Users,
     GitBranch,
-    ArrowUpRight
+    ArrowUpRight,
+    ArrowRight
 } from 'lucide-react';
 import { Card, Badge } from '../common/UIElements';
 import { HeroesMatrix, PrescriptionCard } from '../dashboard/Widgets';
@@ -348,10 +349,10 @@ export const DashboardView = ({
                                 disabled={!input.trim()}
                                 className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all mb-0.5
                                     ${input.trim()
-                                        ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md transform hover:scale-105'
+                                        ? 'bg-slate-900 text-white hover:bg-black shadow-md'
                                         : 'bg-slate-100 text-slate-300 cursor-not-allowed'}`}
                             >
-                                <Zap size={14} strokeWidth={2.5} />
+                                <ArrowRight size={14} strokeWidth={2.5} />
                             </button>
                         </div>
                     </div>
